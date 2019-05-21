@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis:
+    image: "redis:latest"
+    networks:
+      - redis
+  
+  client:
+    build: .
+    depends_on:
+      - redis
+    networks:
+      - redis
+
+networks:
+  redis:
